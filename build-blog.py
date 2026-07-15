@@ -78,7 +78,7 @@ def mega(p):
 <a href="{p}check.html"><b>AI 가시성 체크</b><span>URL만 넣으면 30초 진단</span></a>
 <a href="{p}pricing.html#quiz"><b>30초 플랜 추천</b><span>3가지 질문으로 플랜 찾기</span></a>
 <div class="gap"></div><h5>요금</h5>
-<a href="{p}pricing.html"><b>플랜 비교</b><span>기본형 · 성장형 · 기업형</span></a>
+<a href="{p}pricing.html"><b>플랜 비교</b><span>소상공인형 · 기업형 · 엔터프라이즈</span></a>
 <a href="{p}pricing.html#faq"><b>요금 FAQ</b><span>약정 · 수량 · 바우처 연계</span></a></div>
 <div class="mega-col"><h5>리소스</h5>
 <a href="{p}blog/index.html"><b>블로그</b><span>AI 검색 시대의 홍보 인사이트</span></a>
