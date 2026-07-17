@@ -228,7 +228,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
 .cmp-r:first-child{border-top:0}
 .cmp-c{padding:19px 26px;font-size:15.5px;display:flex;align-items:center;gap:11px}
 .cmp-c.o{color:var(--mut);background:#FAFBFD}
-.cmp-c.n{font-weight:700;border-left:1px solid var(--line)}
+.cmp-c.n{font-weight:700;border-left:1px solid #C4D4FF;background:#EDF3FF;color:var(--ink)}
 .cmp-c .mk{font-size:12px;font-weight:800}
 .cmp-c.o .mk{color:#C6CDDA}
 .cmp-c.n .mk{color:var(--mint)}
@@ -255,9 +255,25 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
 .foot .brand{color:#fff;margin-bottom:14px}
 .foot p{font-size:13.5px;line-height:1.7;max-width:320px}
 .foot-b{margin-top:38px;padding-top:22px;border-top:1px solid #141C30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#4E5A73}
-/* reveal */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* reveal — blur-up */
+.rv{opacity:0;transform:translateY(24px);filter:blur(4px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),filter .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none;filter:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+/* 부모 등장에 연동한 자식 순차 스태거 */
+.svc-copy .svc-item{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
+.svc-copy.in .svc-item{opacity:1;transform:none}
+.svc-copy.in .svc-item:nth-child(1){transition-delay:.2s}
+.svc-copy.in .svc-item:nth-child(2){transition-delay:.32s}
+.svc-copy.in .svc-item:nth-child(3){transition-delay:.44s}
+.svc-copy.in .svc-item:nth-child(4){transition-delay:.56s}
+.shero .toc a{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.shero.in .toc a{opacity:1;transform:none}
+.shero.in .toc a:nth-child(1){transition-delay:.18s}
+.shero.in .toc a:nth-child(2){transition-delay:.26s}
+.shero.in .toc a:nth-child(3){transition-delay:.34s}
+.shero.in .toc a:nth-child(4){transition-delay:.42s}
+.shero.in .toc a:nth-child(5){transition-delay:.5s}
+.shero.in .toc a:nth-child(6){transition-delay:.58s}
 @media(max-width:980px){
   .nav-menu{display:none}
   .svc-in{grid-template-columns:1fr;gap:44px}
@@ -276,7 +292,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
   .cmp-c.n{border-left:0;border-top:1px dashed var(--line)}
   .cal{right:0}
 }
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none;filter:none}.svc-copy .svc-item,.shero .toc a{opacity:1;transform:none}}
 </style>
 </head>
 <body id="top">
@@ -290,6 +306,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
       <a href="check.html">AI 가시성 체크</a>
       <a href="blog/index.html">블로그</a>
       <a href="glossary/index.html">용어사전</a>
+      <a href="faq.html">FAQ</a>
     </nav>
     <div class="nav-r"><a class="nav-cta" href="index.html#final">무료 진단 받기</a></div>
     <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
@@ -298,6 +315,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
     <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
     <div class="mega-col">
       <h5>서비스</h5>
+      <a href="services.html"><b style="color:var(--cobalt)">서비스 전체 보기 →</b><span>6가지 서비스를 한눈에</span></a>
       <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
       <a href="services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
       <a href="services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
@@ -330,7 +348,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.035em;line-height:1.25;word-break:k
 </script>
 
 <!-- HERO -->
-<section class="shero">
+<section class="shero rv">
   <div class="wrap">
     <span class="eyebrow" style="justify-content:center">서비스 — AI가 보는 PR</span>
     <h1>사람이 보는 홍보 말고,<br><span class="co cu">AI가 읽는 PR</span>을 설계합니다</h1>

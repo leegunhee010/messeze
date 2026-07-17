@@ -102,6 +102,28 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .tier .btn{width:100%}
 .tier.pop .btn{background:var(--cobalt);color:#fff;border-color:var(--cobalt)}
 .tier.pop .btn:hover{background:#4270FF}
+/* 요금 카드 호버 리프트 */
+.price-grid .tier{transition:transform .4s cubic-bezier(.34,1.2,.4,1),box-shadow .4s ease,opacity .6s ease,border-color .3s;will-change:transform}
+.price-grid .tier:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(20,32,68,.16)}
+.price-grid .tier.pop:hover{box-shadow:0 32px 74px rgba(20,32,68,.42)}
+/* 요금 카드 스크롤 등장 — 순차로 나타남 */
+@keyframes tierAppear{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.price-grid .tier.in{animation:tierAppear .62s cubic-bezier(.2,.7,.2,1) backwards}
+.price-grid .tier.in:nth-child(2){animation-delay:.14s}
+.price-grid .tier.in:nth-child(3){animation-delay:.28s}
+@media(prefers-reduced-motion:reduce){.price-grid .tier.in{animation:none}}
+/* 비교표 핀 — 섹션 고정 + 스크롤에 따라 강조 열이 소상공인→기업형→엔터로 이동 */
+.cmp-pin{position:relative;min-height:240vh;padding:0}
+.cmp-pin .pin-stick{position:sticky;top:0;min-height:100vh;display:flex;align-items:center}
+.cmpx-c{transition:background .45s ease,color .3s ease}
+/* 소상공인·엔터 활성 = 코발트 */
+.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4){background:rgba(43,92,255,.12)}
+.cmpx.col1 .cmpx-hd>.cmpx-c:nth-child(2),.cmpx.col3 .cmpx-hd>.cmpx-c:nth-child(4){background:var(--cobalt);color:#fff}
+/* 기업형은 활성일 때만 진한 잉크 */
+.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3){background:rgba(16,31,63,.08)}
+.cmpx.col2 .cmpx-hd>.cmpx-c:nth-child(3){background:var(--ink);color:#fff}
+.cmpx.col1 .cmpx-r>.cmpx-c:nth-child(2) .v,.cmpx.col2 .cmpx-r>.cmpx-c:nth-child(3) .v,.cmpx.col3 .cmpx-r>.cmpx-c:nth-child(4) .v{color:var(--ink);font-weight:800}
+@media(max-width:980px){.cmp-pin{min-height:0;padding:64px 0}.cmp-pin .pin-stick{position:static;min-height:0;display:block}}
 .price-note{text-align:center;margin-top:22px;font-size:13px;color:var(--mut)}
 /* compare table */
 .cmpx{max-width:920px;margin:0 auto;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--sh-sm);background:#fff}
@@ -110,11 +132,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .cmpx-c{padding:17px 20px;font-size:14.5px;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--body)}
 .cmpx-c.lb{justify-content:flex-start;text-align:left;font-weight:700;color:var(--ink);background:#FAFBFD}
 .cmpx-hd .cmpx-c{font-size:14px;font-weight:800;padding:20px;color:var(--ink)}
-.cmpx-hd .cmpx-c.pp{background:var(--ink);color:#fff}
+.cmpx-hd .cmpx-c.pp{background:transparent;color:var(--ink)}
 .cmpx-c .v{font-weight:700;color:var(--ink)}
 .cmpx-c .ok{color:var(--mint);font-weight:800}
 .cmpx-c .no{color:#C6CDDA;font-weight:800}
-.cmpx-c.pp{background:var(--sky-2)}
 .cmpx-note{text-align:center;margin-top:18px;font-size:13px;color:var(--mut)}
 /* common features */
 .common{background:var(--sky-2)}
@@ -123,6 +144,14 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .cg h4{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:9px}
 .cg h4 .ic{width:30px;height:30px;border-radius:9px;background:var(--sky);display:grid;place-items:center;font-size:14px}
 .cg ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+/* 모든 플랜 공통 4카드 — 스크롤 시 하나씩 선택되는 강조 모션 */
+.cg-grid .cg{transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1),border-color .5s ease,box-shadow .5s ease}
+.cg h4 .ic{transition:background .5s ease,box-shadow .5s ease,transform .5s cubic-bezier(.3,1.4,.4,1)}
+.cg.in{border-color:#B9CCFF;box-shadow:0 16px 40px rgba(43,92,255,.13)}
+.cg.in h4 .ic{background:#E4ECFF;box-shadow:0 0 0 4px rgba(43,92,255,.16);transform:scale(1.12)}
+.cg-grid .cg:nth-child(2),.cg-grid .cg:nth-child(2) h4 .ic{transition-delay:.16s}
+.cg-grid .cg:nth-child(3),.cg-grid .cg:nth-child(3) h4 .ic{transition-delay:.32s}
+.cg-grid .cg:nth-child(4),.cg-grid .cg:nth-child(4) h4 .ic{transition-delay:.48s}
 .cg li{font-size:13.5px;color:var(--body);display:flex;gap:8px;line-height:1.5}
 .cg li::before{content:"✓";color:var(--mint);font-weight:800;font-size:11px;padding-top:2px}
 /* quiz */
@@ -189,6 +218,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <a href="check.html">AI 가시성 체크</a>
       <a href="blog/index.html">블로그</a>
       <a href="glossary/index.html">용어사전</a>
+      <a href="faq.html">FAQ</a>
     </nav>
     <div class="nav-r"><a class="nav-cta" href="index.html#final">무료 진단 받기</a></div>
     <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
@@ -197,6 +227,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
     <a class="mega-brand" href="index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
     <div class="mega-col">
       <h5>서비스</h5>
+      <a href="services.html"><b style="color:var(--cobalt)">서비스 전체 보기 →</b><span>6가지 서비스를 한눈에</span></a>
       <a href="services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
       <a href="services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
       <a href="services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
@@ -233,7 +264,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
   <div class="wrap">
     <span class="eyebrow" style="justify-content:center">요금 및 플랜 비교</span>
     <h1>기업 홍보, 더 이상<br><span class="co">비싸고 어렵지 않습니다</span></h1>
-    <p>소상공인부터 기업까지, 우리 상황에 맞는 플랜을 선택하세요. 1개월 단위 구독이며, 3개월 결제 시 할인됩니다.</p>
+    <p>소상공인부터 기업까지, 우리 상황에 맞는 플랜을 선택하세요.<br>1개월 단위 구독이며, 3개월 결제 시 할인됩니다.</p>
     <div class="incl rv in">
       <b>어떤 플랜을 골라도 기본 포함</b>
       <div class="items"><span>AEO·GEO 가시성 평가 월 1회</span><span>핵심 질문 설계</span><span>전담 매니저</span><span>월간 리포트</span></div>
@@ -298,13 +329,13 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 </section>
 
 <!-- COMPARE TABLE -->
-<section class="sec" style="padding-top:66px">
-  <div class="wrap">
+<section class="sec cmp-pin">
+  <div class="pin-stick"><div class="wrap">
     <div class="shead rv">
       <span class="eyebrow">플랜 자세히 비교하기</span>
       <h2 class="h2">어떤 차이가 있는지 궁금하시죠?</h2>
     </div>
-    <div class="cmpx rv">
+    <div class="cmpx" id="cmpx">
       <div class="cmpx-r cmpx-hd"><div class="cmpx-c lb">플랜별 제공 범위</div><div class="cmpx-c">소상공인형</div><div class="cmpx-c pp">기업형</div><div class="cmpx-c">엔터프라이즈</div></div>
       <div class="cmpx-r"><div class="cmpx-c lb">월 요금 <small>(3개월 결제 시)</small></div><div class="cmpx-c"><span class="v">60만원 (150만원)</span></div><div class="cmpx-c pp"><span class="v">100만원 (240만원)</span></div><div class="cmpx-c"><span class="v">별도 문의</span></div></div>
       <div class="cmpx-r"><div class="cmpx-c lb">AEO·GEO 가시성 평가</div><div class="cmpx-c"><span class="v">월 1회</span></div><div class="cmpx-c pp"><span class="v">월 1회</span></div><div class="cmpx-c"><span class="v">월 1회</span></div></div>
@@ -317,7 +348,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
       <div class="cmpx-r"><div class="cmpx-c lb">다국어·해외 배포·전시회·컨설팅</div><div class="cmpx-c"><span class="no">—</span></div><div class="cmpx-c pp"><span class="no">—</span></div><div class="cmpx-c"><span class="ok">✓</span></div></div>
     </div>
     <div class="cmpx-note">월 블로그 발행량 기준 — 소상공인형 약 16건, 기업형 약 40건 (주 2회 × 계정 수). 수량 확대가 필요하면 상담 시 협의합니다.</div>
-  </div>
+  </div></div>
 </section>
 
 <!-- COMMON FEATURES -->
@@ -388,8 +419,23 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 </footer>
 
 <script>
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{e.target.classList.toggle('in',e.isIntersecting)})},{threshold:.12,rootMargin:'0px 0px -8% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// 비교표 핀 스포트라이트 — 스크롤 진행도에 따라 강조 열 이동 (소상공인→기업형→엔터)
+const cmpPin=document.querySelector('.cmp-pin');
+const cmpxEl=document.getElementById('cmpx');
+if(cmpPin&&cmpxEl&&matchMedia('(min-width:981px)').matches){
+  let curCol=-1;
+  const setCol=i=>{if(i===curCol)return;curCol=i;cmpxEl.classList.remove('col1','col2','col3');if(i>=0)cmpxEl.classList.add('col'+(i+1));};
+  const onScroll=()=>{
+    const track=cmpPin.offsetHeight-innerHeight;if(track<=0){setCol(0);return;}
+    const p=-cmpPin.getBoundingClientRect().top/track;
+    if(p<0||p>1)return;
+    setCol(Math.min(2,Math.floor(p*3)));
+  };
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+}
 
 // ---- 30초 플랜 추천 ----
 const QUIZ=[

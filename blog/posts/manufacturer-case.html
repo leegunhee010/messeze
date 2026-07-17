@@ -60,6 +60,11 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .mega-col a:hover{background:var(--sky-2)}
 .mega-col a:hover b{color:var(--cobalt)}
 @media(max-width:900px){.nav-menu{display:none}.nav-burger{display:block}.mega{max-height:calc(100vh - 72px);overflow:auto}.mega-in{grid-template-columns:1fr;gap:18px}.mega-brand{min-height:auto;padding:18px 20px}}
+.cover{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;z-index:0}
+.card .thumb::after,.pcover::after,.rcard .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,31,63,.06) 42%,rgba(9,17,35,.55));z-index:1;pointer-events:none}
+.card .thumb .tag,.pcover .tag{z-index:2}
+.card:hover .thumb .cover,.rcard:hover .thumb .cover{transform:scale(1.06);transition:transform .6s ease}
+.card .thumb .cover,.rcard .thumb .cover{transition:transform .6s ease}
 
 .crumb{font-size:13.5px;font-weight:600;color:var(--mut);padding:34px 0 0;display:flex;gap:8px;align-items:center}
 .crumb a:hover{color:var(--cobalt)}
@@ -68,7 +73,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .phead h1{font-size:clamp(27px,3.8vw,40px);line-height:1.32}
 .phead .meta{margin-top:18px;font-size:13.5px;color:var(--mut);font-weight:600;display:flex;gap:14px;align-items:center}
 .phead .meta .by{color:var(--ink)}
-.pcover{max-width:860px;margin:0 auto;height:230px;border-radius:22px;position:relative;overflow:hidden}
+.pcover{max-width:860px;margin:0 auto;height:360px;border-radius:22px;position:relative;overflow:hidden}
 .pcover .pat{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.16) 1px,transparent 1px);background-size:20px 20px}
 .pcover .tag{position:absolute;left:24px;bottom:20px;font-size:13px;font-weight:800;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px}
 .article{max-width:720px;margin:0 auto;padding:46px 0 10px}
@@ -78,6 +83,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .article li{font-size:16px;color:#333C4E;line-height:1.75}
 .article b{color:var(--ink)}
 .article blockquote{background:var(--sky);border-left:4px solid var(--cobalt);border-radius:0 14px 14px 0;padding:20px 24px;font-size:16px;color:var(--navy);line-height:1.75;margin:34px 0}
+.fig{margin:38px 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--sky-2)}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--mut);font-weight:600;text-align:center;padding:13px 16px;border-top:1px solid var(--line);background:#fff}
 .rel{max-width:860px;margin:60px auto 0;padding:0 24px}
 .rel h3{font-size:20px;margin-bottom:20px}
 .rel-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -90,7 +98,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 .rcard h4{font-size:15.5px;margin-top:8px;line-height:1.45}
 .backrow{max-width:720px;margin:44px auto 0;padding:0 24px}
 .backrow a{font-size:14.5px;font-weight:700;color:var(--cobalt)}
-@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:170px;border-radius:16px;margin:0 20px}}
+@media(max-width:700px){.rel-grid{grid-template-columns:1fr}.pcover{height:220px;border-radius:16px;margin:0 20px}}
 </style></head><body>
 <header class="nav"><div class="wrap nav-in">
 <a class="brand" href="../../index.html"><svg viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4H23a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H14l-4 4.5V22H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><line x1="9.5" y1="10" x2="20.5" y2="10"/><line x1="9.5" y1="13.5" x2="20.5" y2="13.5"/><line x1="9.5" y1="17" x2="16.5" y2="17"/></svg><span class="bw">messeze</span></a>
@@ -100,6 +108,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 <a href="../../check.html">AI 가시성 체크</a>
 <a class="on" href="../../blog/index.html">블로그</a>
 <a href="../../glossary/index.html">용어사전</a>
+<a href="../../faq.html">FAQ</a>
 </nav>
 <div class="nav-r"><a class="nav-cta" href="../../index.html#final">무료 진단 받기</a></div>
 <button class="nav-burger" id="burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
@@ -107,6 +116,7 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 <div class="mega" id="mega"><div class="wrap mega-in">
 <a class="mega-brand" href="../../index.html"><span class="bw2">messeze</span><p>사람에게만 보이는 홍보에서,<br>AI가 읽는 홍보로</p></a>
 <div class="mega-col"><h5>서비스</h5>
+<a href="../../services.html"><b style="color:var(--cobalt)">서비스 전체 보기 →</b><span>6가지 서비스를 한눈에</span></a>
 <a href="../../services/visibility.html"><b>AI 가시성 평가</b><span>AI가 우리 회사를 아는지부터</span></a>
 <a href="../../services/website-renewal.html"><b>홈페이지 수정·리뉴얼</b><span>AI가 읽는 구조로 정비</span></a>
 <a href="../../services/website-build.html"><b>홈페이지 제작</b><span>질문이 페이지가 되는 설계</span></a>
@@ -133,10 +143,10 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 <div class="wrap crumb"><a href="../index.html">블로그</a><span>›</span><span class="cat">사례</span></div>
 <div class="wrap phead"><h1>검색량 없는 제조기업이 AI에 발견되기까지</h1>
 <div class="meta"><span class="by">by. messeze 편집팀</span><span>·</span><span>2026-06-18</span></div></div>
-<div class="pcover" style="background:linear-gradient(135deg,#0F2350,#2B5CFF)"><span class="pat"></span><span class="tag">사례</span></div>
+<div class="pcover" style="background:linear-gradient(135deg,#0F2350,#2B5CFF)"><span class="pat"></span><img class="cover" src="https://images.unsplash.com/photo-1717386255773-1e3037c81788?w=800&h=450&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"><span class="tag">사례</span></div>
 <article class="article wrap">
 <p>메세지의 운영 방식을 가장 쉽게 이해하는 방법은 한 기업의 3개월을 따라가 보는 것입니다. 아래는 산업용 정밀부품 제조사 A사를 가정한 시나리오입니다. (특정 기업의 실제 사례가 아닌, 표준 운영 과정을 설명하기 위한 예시입니다.)</p>
-<h2>0주차 — 진단: "AI는 A사를 모른다"</h2>
+<figure class="fig"><svg viewBox="0 0 600 210" xmlns="http://www.w3.org/2000/svg" font-family="'Pretendard',system-ui,sans-serif"><line x1="66" y1="108" x2="540" y2="108" stroke="#D8E0EC" stroke-width="3"/><g><circle cx="96" cy="108" r="12" fill="#8B95A7"/><text x="96" y="66" font-size="13.5" fill="#0A1930" text-anchor="middle" font-weight="700">0주차</text><text x="96" y="150" font-size="11.5" fill="#8B95A7" text-anchor="middle">진단</text><text x="96" y="167" font-size="11.5" fill="#8B95A7" text-anchor="middle">AI는 모른다</text></g><g><circle cx="244" cy="108" r="12" fill="#3D6BFF"/><text x="244" y="66" font-size="13.5" fill="#0A1930" text-anchor="middle" font-weight="700">1개월</text><text x="244" y="150" font-size="11.5" fill="#8B95A7" text-anchor="middle">첫 축적</text><text x="244" y="167" font-size="11.5" fill="#8B95A7" text-anchor="middle">페이지·보도·칼럼</text></g><g><circle cx="392" cy="108" r="12" fill="#2B5CFF"/><text x="392" y="66" font-size="13.5" fill="#0A1930" text-anchor="middle" font-weight="700">2개월</text><text x="392" y="150" font-size="11.5" fill="#8B95A7" text-anchor="middle">출처 확대</text><text x="392" y="167" font-size="11.5" fill="#8B95A7" text-anchor="middle">4곳에서 확인</text></g><g><circle cx="510" cy="108" r="14" fill="#0BBF8C"/><text x="510" y="64" font-size="13.5" fill="#0A1930" text-anchor="middle" font-weight="700">3개월</text><text x="510" y="152" font-size="11.5" fill="#0BBF8C" text-anchor="middle" font-weight="700">AI에 등장</text><text x="510" y="169" font-size="11.5" fill="#8B95A7" text-anchor="middle">기사·홈피 인용</text></g></svg><figcaption>제조기업 A사의 3개월 — 진단에서 AI 등장까지</figcaption></figure><h2>0주차 — 진단: "AI는 A사를 모른다"</h2>
 <p>주요 AI 검색에 A사 관련 질문을 던져 봅니다. "국내에서 항공용 정밀부품을 소량 생산하는 업체는?" — A사는 등장하지 않습니다. 홈페이지는 있지만 제품 사양 PDF뿐이고, 언론 기사는 5년 전 1건. AI가 읽을 수 있는 정보가 사실상 없는 상태입니다.</p>
 <h2>1~2주차 — 질문 설계</h2>
 <p>A사 대표·영업팀과 온보딩 미팅에서 핵심 질문 6개를 정의합니다. 소량 생산, 특정 인증, 수출 경험, 납기 대응 등 <b>실제 바이어가 묻는 언어</b>로요. 이 질문들이 3개월 콘텐츠 계획의 뼈대가 됩니다.</p>
@@ -156,9 +166,9 @@ h1,h2,h3,h4{font-weight:800;letter-spacing:-.03em;line-height:1.3;word-break:kee
 <blockquote>같은 3개월이라도, 시작이 빠른 기업이 그 분야의 '기본 답변'이 됩니다.</blockquote>
 </article>
 <div class="backrow"><a href="../index.html">← 블로그 목록으로</a></div>
-<div class="rel"><h3>함께 읽으면 좋은 글</h3><div class="rel-grid"><a class="rcard" href="aeo-geo-seo.html"><div class="thumb" style="background:linear-gradient(135deg,#101F3F,#2B5CFF)"><span class="pat"></span></div>
-<div class="b"><span class="cat">AI 가시성</span><h4>AEO·GEO·SEO, 무엇이 어떻게 다른가요?</h4></div></a><a class="rcard" href="ai-pr-guide.html"><div class="thumb" style="background:linear-gradient(135deg,#16295C,#419CFF)"><span class="pat"></span></div>
-<div class="b"><span class="cat">AI 가시성</span><h4>AI 검색 시대의 기업 홍보법: 무엇이 달라졌나</h4></div></a></div></div>
+<div class="rel"><h3>함께 읽으면 좋은 글</h3><div class="rel-grid"><a class="rcard" href="renewal-case.html"><div class="thumb" style="background:linear-gradient(135deg,#12203F,#4A6BFF)"><span class="pat"></span><img class="cover" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=450&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+<div class="b"><span class="cat">사례</span><h4>홈페이지만 고쳤을 뿐인데 — 리뉴얼 후 3개월</h4></div></a><a class="rcard" href="press-case.html"><div class="thumb" style="background:linear-gradient(135deg,#0E2148,#5B7CFF)"><span class="pat"></span><img class="cover" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&h=450&fit=crop&q=70&auto=format" alt="" loading="lazy" referrerpolicy="no-referrer"></div>
+<div class="b"><span class="cat">사례</span><h4>보도자료 한 건이 만든 변화 — B2B 부품사 사례</h4></div></a></div></div>
 <div class="wrap"><div class="cta-band">
 <div><h3>우리 회사는 AI에서 어떻게 보이고 있을까요?</h3><p>AI 가시성 무료 진단 · 보도자료 1건 무료 · 최적화 콘텐츠 3건</p></div>
 <a class="btn" href="../../index.html#final">무료 진단 신청하기</a></div></div>
